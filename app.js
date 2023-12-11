@@ -3,7 +3,7 @@ const express = require("express");
 const logger = require("./middlewares/logger")
 const {notfound,errorHandler} = require("./middlewares/errors")
 require("dotenv").config();
-const connectToDB = require("./config/db,js");
+const connectToDB = require("./config/db");
 
 
 //connection to DataBase 

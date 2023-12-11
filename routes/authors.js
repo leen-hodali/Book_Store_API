@@ -35,7 +35,10 @@ const {verifyTokenAndAdmin} =require("../middlewares/verifyToken");
  
  router.get("/" , asyncHandler(
   async(req,res) => {
-    const authorlist = await Author.find();//.sort({firstname: 1}).select("firstname lastname -_id")
+    const {pageNumber} = req.query;
+    const perpage=2;
+    const authorlist = await Author.find()//.sort({firstname: 1}).select("firstname lastname -_id")
+    .skip((pageNumber - 1)*perpage).limit(perpage);//in each page there is 2 authors
     res.status(200).json(authorlist);
     }
  ));
